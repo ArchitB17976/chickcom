@@ -5,18 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class EmployeeControl 
 {
     @Autowired
     private EmployeeServe eServe;
     
-    @PostMapping("/post")
+    @PostMapping("/addEmp")
     public Employee addEmployee(@RequestBody Employee emp)
     {
         return eServe.saveEmployeeToDB(emp);
     }
 
-    @GetMapping(value = {"/getEmps", "{empID}"})
+    @GetMapping(value = {"/getEmps", "/{empID}"})
     public List<Employee> getEmployees(@PathVariable (required = false) long empID)
     {
         return eServe.getListOfEmployees(empID);

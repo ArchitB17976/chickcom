@@ -17,7 +17,7 @@ public class ProjectControl
         return pServe.saveProjectToDB(project);
     }
 
-    @GetMapping("/get/{projId}")
+    @GetMapping(value = {"/getProjects", "/{projId}"})
     public List<Project> getProjects(@PathVariable (required = false) long projId)
     {
         return pServe.getListOfProjects(projId);
